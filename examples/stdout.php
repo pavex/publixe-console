@@ -16,6 +16,6 @@ Container::set(Publixe\Console\Stdout::class);
 
 Console::addWriter(Publixe\Console\Stdout::class);
 
-// ...and process mesage
+// ...and write message
 Console::log('Some message.');
 Console::warning('Some warning.');
