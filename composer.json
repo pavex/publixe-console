@@ -1,0 +1,16 @@
+{
+    "name": "publixe/console",
+    "description": "Console/log/profiler control",
+    "type": "library",
+    "require": {
+        "publixe/container": "dev-master"
+    },
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "pavex",
+            "email": "pavex@ines.cz"
+        }
+    ],
+    "minimum-stability": "dev"
+}
