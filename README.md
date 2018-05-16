@@ -4,7 +4,7 @@ Installation
 ---
 
 ```cmd
-composer install publixe/console
+composer require publixe/console
 ```
 
 And use Publixe\Console.
