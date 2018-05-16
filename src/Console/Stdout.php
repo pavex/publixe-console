@@ -2,7 +2,6 @@
 
 	namespace Publixe\Console;
 	use Publixe\Console;
-	use \Exception;
 
 
 /**
@@ -10,7 +9,7 @@
  *
  * @author	Pavex
  */
-	class Stdout extends AbstractWriter
+	class Stdout implements IWriter
 	{
 
 /** @var Array */
@@ -27,25 +26,13 @@
 
 
 /**
- * @param string Profiler name
- * @param array
- */
-		public function __construct(array $config = [])
-		{
-		}
-
-
-
-
-
-/**
  * @param string
  * @param int
  */
 		public function writeMessage($message, $type)
 		{
 			$message_type = self::$types[$type];
-			printf("Stdout> %s%s\n", $message_type ? sprintf("%s: ", $message_type) : '', $message);
+			printf("Stdout>> %s%s\n", $message_type ? sprintf("%s: ", $message_type) : '', $message);
 		}
 
 
