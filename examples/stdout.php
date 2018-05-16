@@ -2,20 +2,21 @@
 
 require_once __DIR__ . '/../src/Console.php';
 require_once __DIR__ . '/../src/Console/IWriter.php';
-require_once __DIR__ . '/../src/Console/AbstractWriter.php';
 require_once __DIR__ . '/../src/Console/Stdout.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 
 //
-use Publixe\Container;
 use Publixe\Console;
 
-// Setup container
-Container::set(Publixe\Console\Stdout::class);
+// Write messege on CLI only
+Console::cli('CLI only message.');
+Console::log('Stdout not enabled yet.');
 
-Console::addWriter(Publixe\Console\Stdout::class);
+// Enable Stdout writter
+Console::enable();
 
 // ...and write message
 Console::log('Some message.');
 Console::warning('Some warning.');
+
