@@ -1,20 +1,18 @@
 <?php
 
 	namespace Publixe;
-	use Publixe\Container;
+	use Publixe\Console\IWriter;
+	use Publixe\Console\Stdout;
+	use Publixe\Console\Fileout;
 
 
 /**
  * Console controller.
  *
- * @author	Pavex
+ * @author	Pavex <pavex@ines.cz>
  */
 	class Console
 	{
-
-
-// Abstract writer
-		const ABSTRACT_WRITER_CLASSNAME = 'Publixe\Console\AbstractWriter';
 
 // Message types
 		const MESSAGE_TYPE_LOG = 1;
@@ -35,7 +33,7 @@
 			self::MESSAGE_TYPE_ERROR => "Error: %s\n"
 		];
 
-/** @var array */
+/** @var Array<Publixe\Console\IWriter>*/
 		private static $writers = [];
 
 
@@ -43,14 +41,40 @@
 
 
 /**
+ * Attach writer service
+ * @param Publixe\Console\IWriter
+ */
+		public static function attachWriter(IWriter $writer)
+		{
+			self::$writers[] = $writer;
+		}
+
+
+
+
+
+/**
+ * Enable stdout
  * @param string
  */
-		public static function addWriter($name)
+		public static function enable()
 		{
-			$container = Container::getContainer();
-			if ($container -> has($name, self::ABSTRACT_WRITER_CLASSNAME)) {
-				self::$writers[] = $container -> get($name);
-			}
+			$writer = new Stdout();
+			self::attachWriter($writer);
+		}
+
+
+
+
+
+/**
+ * Set console output into specific file
+ * @param string
+ */
+		public static function setFilename($filename)
+		{
+			$writer = new Fileout($filename);
+			self::attachWriter($writer);
 		}
 
 
